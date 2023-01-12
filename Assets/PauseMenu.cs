@@ -23,7 +23,7 @@ private void Awake()
 
     private void Update()
     {
-        if (Input.GetKey("escape") && canPause)
+        if ((Input.GetKey(name:"escape") || Input.GetKey(name:"joystick button 7")) && canPause)
         {
             StartCoroutine(TogglePause());
         }
