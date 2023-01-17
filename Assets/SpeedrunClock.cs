@@ -11,6 +11,7 @@ public class SpeedrunClock : MonoBehaviour
     private float time = 0f;
     // Whether or not the timer is running.
     private bool isRunning = false;
+    private bool finished = false;
 
     // This is a reference to the TextMeshProUGUI component that displays the time.
     public TextMeshProUGUI timeText;
@@ -37,6 +38,8 @@ public class SpeedrunClock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(finished)
+            return;
         // If the timer is running, add the time since the last frame to the total time.
         if (isRunning)
         {
@@ -82,5 +85,10 @@ public void ToggleTimer()
         int milliseconds = Mathf.FloorToInt((time * 1000) % 1000);
         // Return the time in a formatted string.
         return string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
+    }
+
+    public void Win()
+    {
+        finished = true;
     }
 }
